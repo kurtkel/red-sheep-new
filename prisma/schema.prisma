@@ -1,0 +1,33 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Survey {
+  id               Int        @id @default(autoincrement())
+  organisationName String?    @map("organisation_name")
+  createdAt        DateTime   @default(now()) @map("created_at")
+  responses        Response[]
+
+  @@map("surveys")
+}
+
+model Response {
+  id             Int      @id @default(autoincrement())
+  surveyId       Int      @map("survey_id")
+  respondentRole String   @map("respondent_role") // 'leader' or 'staff'
+  questionNumber Int      @map("question_number")
+  sectionName    String   @map("section_name")
+  score          Int
+  submittedAt    DateTime @default(now()) @map("submitted_at")
+  survey         Survey   @relation(fields: [surveyId], references: [id])
+
+  @@map("responses")
+}
