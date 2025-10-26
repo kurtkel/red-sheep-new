@@ -265,7 +265,7 @@ export default function Home() {
                   Ready to Record
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400 mb-4">
-                  Click the "Start Recording" button above to begin capturing your conversation.
+                  Click the &quot;Start Recording&quot; button above to begin capturing your conversation.
                 </p>
                 <div className="text-left max-w-md mx-auto">
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-2 font-semibold">
